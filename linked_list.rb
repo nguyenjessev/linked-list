@@ -24,7 +24,14 @@ module LinkedList
       node
     end
 
-    def prepend(value); end
+    def prepend(value)
+      node = Node.new(value)
+      node.next_node = head if head
+
+      self.head = node
+      self.size += 1
+      node
+    end
 
     def at(index); end
 
@@ -40,7 +47,7 @@ module LinkedList
       pointer = head
 
       while pointer
-        print "( #{pointer.value} ) -> "
+        print "#{pointer} -> "
         pointer = pointer.next_node
       end
 
@@ -52,9 +59,13 @@ module LinkedList
   class Node
     attr_accessor :value, :next_node
 
-    def initialize(value = nil, next_node = nil)
+    def initialize(value = nil)
       @value = value
       @next_node = next_node
+    end
+
+    def to_s
+      "( #{value} )"
     end
   end
 end
