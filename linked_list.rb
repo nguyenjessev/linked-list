@@ -44,7 +44,22 @@ module LinkedList
       pointer
     end
 
-    def pop; end
+    def pop
+      return nil unless tail
+
+      to_remove = tail
+
+      if size > 1
+        at(size - 2).next_node = nil
+        self.tail = at(size - 2)
+      else
+        self.head = nil
+        self.tail = nil
+      end
+
+      self.size -= 1
+      to_remove
+    end
 
     def contains?(value); end
 
