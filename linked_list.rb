@@ -69,7 +69,13 @@ module LinkedList
       false
     end
 
-    def find(value); end
+    def find(value)
+      size.times do |i|
+        return i if at(i).value == value
+      end
+
+      nil
+    end
 
     def to_s
       return nil unless head
