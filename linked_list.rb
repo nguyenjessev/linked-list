@@ -77,6 +77,22 @@ module LinkedList
       nil
     end
 
+    def insert_at(value, index)
+      return nil if index > size
+
+      node = Node.new(value)
+
+      node.next_node = at(index)
+      at(index - 1).next_node = node if index.positive?
+      self.head = node if index.zero?
+      self.tail = node if node.next_node.nil?
+
+      self.size += 1
+      node
+    end
+
+    def remove_at(index); end
+
     def to_s
       return nil unless head
 
