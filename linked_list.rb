@@ -33,7 +33,16 @@ module LinkedList
       node
     end
 
-    def at(index); end
+    def at(index)
+      return nil if (index + 1) > size
+
+      pointer = head
+      index.times do
+        pointer = pointer.next_node
+      end
+
+      pointer
+    end
 
     def pop; end
 
