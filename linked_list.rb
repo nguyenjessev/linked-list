@@ -3,7 +3,7 @@
 module LinkedList
   # This class represents the linked list
   class LinkedList
-    attr_accessor :head, :size
+    attr_accessor :size, :head, :tail
 
     def initialize
       self.size = 0
@@ -11,7 +11,18 @@ module LinkedList
       self.tail = nil
     end
 
-    def append(value); end
+    def append(value)
+      node = Node.new
+      if tail
+        tail.next_node = node
+      else
+        self.head = node
+      end
+
+      self.tail = node
+      self.size += 1
+      node
+    end
 
     def prepend(value); end
 
