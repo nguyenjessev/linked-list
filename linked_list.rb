@@ -12,7 +12,7 @@ module LinkedList
     end
 
     def append(value)
-      node = Node.new
+      node = Node.new(value)
       if tail
         tail.next_node = node
       else
@@ -34,7 +34,18 @@ module LinkedList
 
     def find(value); end
 
-    def to_s; end
+    def to_s
+      return nil unless head
+
+      pointer = head
+
+      while pointer
+        print "( #{pointer.value} ) -> "
+        pointer = pointer.next_node
+      end
+
+      puts 'nil'
+    end
   end
 
   # This class represents a single node in a linked list
