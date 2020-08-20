@@ -34,7 +34,7 @@ module LinkedList
     end
 
     def at(index)
-      return nil if (index + 1) > size
+      return nil if (index + 1) > size || index.negative?
 
       pointer = head
       index.times do
@@ -91,7 +91,21 @@ module LinkedList
       node
     end
 
-    def remove_at(index); end
+    def remove_at(index)
+      return nil if index.negative? || index >= size
+
+      to_remove = at(index)
+
+      if index.zero?
+        self.head = to_remove.next_node
+      else
+        at(index - 1).next_node = to_remove.next_node
+        self.tail = at(index - 1) if tail == to_remove
+      end
+
+      self.size -= 1
+      to_remove
+    end
 
     def to_s
       return nil unless head
