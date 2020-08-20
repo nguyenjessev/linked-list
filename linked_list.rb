@@ -61,7 +61,13 @@ module LinkedList
       to_remove
     end
 
-    def contains?(value); end
+    def contains?(value)
+      size.times do |i|
+        return true if at(i).value == value
+      end
+
+      false
+    end
 
     def find(value); end
 
